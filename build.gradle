@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.shennarlar.api'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // REST Assured Core
+    testImplementation 'io.rest-assured:rest-assured:5.4.0'
+    testImplementation 'io.rest-assured:json-path:5.4.0'
+
+    // TestNG Runner
+    testImplementation 'org.testng:testng:7.8.0'
+
+    // JSON Parsing & Data Binding
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.16.1'
+}
+
+test {
+    useTestNG() {
+        suites "src/test/resources/TestNG.xml"
+    }
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
